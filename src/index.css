@@ -549,6 +549,24 @@ header {
   animation: slideOut 0.2s backwards;
 }
 
+.show-floating-cart-btn {
+  width: 60px;
+  height: 60px;
+  background: #fcc044;
+  text-align: center;
+  font-size: 22px;
+  border-radius: 60px;
+  padding-top: 14px;
+  cursor: pointer;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  border: 1px solid #888585;
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.5);
+  box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.5);
+}
+
 @-webkit-keyframes slideIn {
   100% { right: 0; }
 }
@@ -646,6 +664,14 @@ header {
 }
 .checkout-page .cart-item .cart-item-details {
   left: -54px;
+}
+.checkout-page .cart-item .cart-item-details .item-description {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.checkout-page .cart-item .cart-item-details p {
+  margin: 0px;
+  font-size: 12px;
 }
 .cart-item .cart-item-details h5 {
   margin: 0px;

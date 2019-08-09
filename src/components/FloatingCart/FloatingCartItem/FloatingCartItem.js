@@ -10,7 +10,7 @@ const FloatingCartItem = (props) => {
                 <div className="product-title"><strong>{props.cartItem.title}</strong></div>
                 <p className="product-description">{props.cartItem.description}</p>
                 <p className="product-quantity">
-                    Quantity: 1
+                    Quantity: {props.cartItem.quantity}
                 </p>
                 <p className="product-price">Price: Rs. <strong>{props.cartItem.price}</strong></p>
             </div>

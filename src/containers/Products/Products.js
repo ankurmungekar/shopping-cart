@@ -68,6 +68,10 @@ class Products extends Component {
         this.props.history.push('/checkout');
     }
 
+    openFloatingCart = () => {
+        this.setState({isFloatingCartOpen: true})
+    }
+
     render () {
         let products = (this.state.products.map(product => (
                 <Product product={product} key={product.name} clicked={this.addToCartHandler}/>
@@ -84,6 +88,9 @@ class Products extends Component {
                     <div className="row">
                         {products}
                     </div>
+                </div>
+                <div className="show-floating-cart-btn" onClick={this.openFloatingCart}>
+                    <i className="fa fa-shopping-cart" aria-hidden="true"></i>
                 </div>
                 <FloatingCart 
                     floatingCart={this.state.floatingCart} 

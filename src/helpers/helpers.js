@@ -9,7 +9,7 @@ export function getLocalStorageCart() {
 export function updateTotal(data) {
     let total = 0;
     data.map(product => (
-        total = total + parseInt(product.price)
+        total = total + parseInt(product.price * product.quantity)
     ));
     return total;
 }
