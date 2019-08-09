@@ -1,0 +1,176 @@
+[{
+    "title": "Adidas",
+    "description": "Men Red Manchester United F.C. Home Printed Jersey",
+    "price": "4999",
+    "image": "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/9720661/2019/5/24/a2adb810-9fcb-4911-bcf9-3c0f97e027361558690421267-ADIDAS-Men-Tshirts-6791558690419519-1.jpg",
+    "sizes": [
+       "xs",
+       "s",
+       "m",
+       "l",
+       "xl",
+       "xxl"
+    ],
+    "colors": [
+       "red",
+       "blue",
+       "green",
+       "orange",
+       "purple"
+    ],
+    "addedToCart": false 
+ },
+ {
+    "title": "Nike",
+    "description": "Men Blue Chelsea CFC",
+    "price": "4695",
+    "image": "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/9163781/2019/5/16/bee1d59b-5471-41d0-b669-c4f49afb941d1557983441386-Nike-Men-Blue-Breathe-Chelsea-CFC-DRI-FIT-STAD-JSY-Sports-T--1.jpg",
+    "sizes": [
+       "xs",
+       "s",
+       "m",
+       "l",
+       "xl",
+       "xxl"
+    ],
+    "colors": [
+       "red",
+       "blue",
+       "green",
+       "orange",
+       "purple"
+    ],
+    "addedToCart": false
+ },
+ {
+    "title": "Puma",
+    "description": "Men Black Manchester City FC",
+    "price": "4999",
+    "image": "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2019/6/28/914904e1-f991-4d34-b08e-74dcb1efc47b1561716940351-1.jpg",
+    "sizes": [
+       "xs",
+       "s",
+       "m",
+       "l",
+       "xl",
+       "xxl"
+    ],
+    "colors": [
+       "red",
+       "blue",
+       "green",
+       "orange",
+       "purple"
+    ],
+    "addedToCart": false
+ },
+ {
+   "title": "ADIDAS",
+   "description": "Red & White FC Bayern Munich Striped",
+   "price": "2999",
+   "image": "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/2022717/2018/8/1/2b46f4a2-1aac-4be1-92d7-02432c66a1cf1533125570863-Adidas-Men-Red--White-FC-Bayern-Munich-Striped-Round-Neck-Je-1.jpg",
+   "sizes": [
+      "xs",
+      "s",
+      "m",
+      "l",
+      "xl",
+      "xxl"
+   ],
+   "colors": [
+      "red",
+      "blue",
+      "green",
+      "orange",
+      "purple"
+   ],
+   "addedToCart": false
+},
+{
+  "title": "PUMA",
+  "description": "Men Yellow Arsenal",
+  "price": "2794",
+  "image": "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/1489329/2016/8/26/11472214370512-Puma-Men-Yellow-Printed-Polo-Collar-T-Shirt-1491472214370195-1.jpg",
+  "sizes": [
+     "xs",
+     "s",
+     "m",
+     "l",
+     "xl",
+     "xxl"
+  ],
+  "colors": [
+     "red",
+     "blue",
+     "green",
+     "orange",
+     "purple"
+  ],
+  "addedToCart": false
+},
+{
+  "title": "Nike",
+  "description": "Blue & Red FC Barcelona",
+  "price": "2794",
+  "image": "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/2187660/2017/10/28/11509186098949-Nike-Men-Blue-Printed-Round-Neck-T-shirt-2861509186098771-1.jpg",
+  "sizes": [
+     "xs",
+     "s",
+     "m",
+     "l",
+     "xl",
+     "xxl"
+  ],
+  "colors": [
+     "red",
+     "blue",
+     "green",
+     "orange",
+     "purple"
+  ],
+  "addedToCart": false
+},
+{
+  "title": "PUMA",
+  "description": "Red Striped AC Milan HOME",
+  "price": "1999",
+  "image": "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/7178056/2018/8/17/4acfbccb-b847-41c7-94e4-e8c5333396261534487234686-na-4541534487234379-1.jpg",
+  "sizes": [
+     "xs",
+     "s",
+     "m",
+     "l",
+     "xl",
+     "xxl"
+  ],
+  "colors": [
+     "red",
+     "blue",
+     "green",
+     "orange",
+     "purple"
+  ],
+  "addedToCart": false
+},
+{
+  "title": "ADIDAS",
+  "description": "Teal Green Printed Real Mridad",
+  "price": "2999",
+  "image": "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/7010624/2018/12/28/19d648a4-5da6-460b-962c-8d58bf545f9f1545977720530-Adidas-Men-Teal-Green-Printed-Real-Madrid-Away-Football-Jers-1.jpg",
+  "sizes": [
+     "xs",
+     "s",
+     "m",
+     "l",
+     "xl",
+     "xxl"
+  ],
+  "colors": [
+     "red",
+     "blue",
+     "green",
+     "orange",
+     "purple"
+  ],
+  "addedToCart": false
+}]
