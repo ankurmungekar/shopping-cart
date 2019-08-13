@@ -93,8 +93,8 @@ class Products extends Component {
                     <i className="fa fa-shopping-cart" aria-hidden="true"></i>
                 </div>
                 <FloatingCart 
-                    floatingCart={this.state.floatingCart} 
-                    removeClicked={this.removeFromCartHandler} 
+                    floatingCart={this.state.floatingCart}
+                    removeClicked={this.removeFromCartHandler}
                     checkoutClicked={this.checkoutHandler}
                     isOpen={this.state.isFloatingCartOpen} />
             </Aux>  
