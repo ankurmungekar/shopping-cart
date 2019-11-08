@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 import Aux from '../../../hoc/Aux/Aux';
-import { getLocalStorageCart } from '../../../helpers/helpers'
 
 class Navigation extends Component {
-
-    state = {
-        floatingCartItemCount: getLocalStorageCart().length || 0
-    }
-
     render () {
         return (
             <Aux>
@@ -20,7 +15,7 @@ class Navigation extends Component {
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item"><NavLink className="nav-link" to="/" exact activeClassName="active">Home</NavLink></li>
                         <li className="nav-item"><NavLink className="nav-link" to="/products" activeClassName="active">Products</NavLink></li>
-                        <li className="nav-item"><NavLink className="nav-link" to="/checkout" activeClassName="active">Checkout ({this.state.floatingCartItemCount})</NavLink></li>
+                        <li className="nav-item"><NavLink className="nav-link" to="/checkout" activeClassName="active">Checkout ({this.props.cart.length})</NavLink></li>
                         <li className="nav-item"><NavLink className="nav-link" to="/contact" activeClassName="active">Contact</NavLink></li>
                     </ul>
                 </div> 
@@ -29,4 +24,10 @@ class Navigation extends Component {
     }
 };
 
-export default Navigation;
+const mapStateToProps = state => {
+    return {
+        cart: state.cart
+    }
+}
+
+export default connect(mapStateToProps)(Navigation);

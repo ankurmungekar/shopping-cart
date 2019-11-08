@@ -1,44 +1,31 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actionType from '../../store/actions';
 
 import FloatingCartItem from './FloatingCartItem/FloatingCartItem';
 import { updateTotal } from '../../helpers/helpers';
 
 class floatingCart extends Component {
 
-    state = {
-        floatingCart: this.props.floatingCart,
-        isOpen: false
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.isOpen !== this.state.isOpen) {
-            this.setState({isOpen: nextProps.isOpen})
-        }
-    }
-
     cartTotal = () => {
-        return updateTotal(this.state.floatingCart)
+        return updateTotal(this.props.cart)
     }
-
-    closeFloatingCart = () => {
-        this.setState({ isOpen: false });
-    };
 
     render (){
 
         let cartClasses = ['floating-cart'];
 
-        if (this.state.isOpen) {
+        if (this.props.isFloatingCartOpen) {
             cartClasses.push('slide-in');
         } else {
             cartClasses.push('slide-out');
         }
 
-        if(this.state.floatingCart.length <= 0 && this.state.isOpen) {
-            this.closeFloatingCart();
+        if(this.props.cart.length <= 0 && this.props.isFloatingCartOpen) {
+            this.props.onCloseFloatingCart();
         }
 
-        let floatingCartItems = (this.state.floatingCart.map(cartItem => (
+        let floatingCartItems = (this.props.cart.map(cartItem => (
             <FloatingCartItem cartItem={cartItem} key={cartItem.name} removeItemClicked={this.props.removeClicked}/>
         )))
 
@@ -49,12 +36,12 @@ class floatingCart extends Component {
                         <div className="col-md-12">
                             <div className="shopping-cart">
                                 <div className="floating-cart-header">
-                                    <h3>Cart ({this.state.floatingCart.length})</h3>
-                                    <span onClick={() => this.closeFloatingCart()} className="close-floating-cart">&times;</span>
+                                    <h3>Cart ({this.props.cart.length})</h3>
+                                    <span onClick={() => this.props.onCloseFloatingCart()} className="close-floating-cart">&times;</span>
                                 </div>
                                 { floatingCartItems }
                                 <div className="cart-total">
-                                    <strong>Total:</strong> Rs. {this.cartTotal()} 
+                                    <strong>Total:</strong> Rs. {this.cartTotal()}
                                 </div>
                                 <div className="checkout">
                                     <button onClick={this.props.checkoutClicked}>Checkout</button>
@@ -67,5 +54,18 @@ class floatingCart extends Component {
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        cart: state.cart,
+        isFloatingCartOpen: state.isFloatingCartOpen
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onCloseFloatingCart: () => dispatch({type: actionType.ON_CLOSE_FLOATING_CART})
+    }
+}
                     
-export default floatingCart;
+export default connect(mapStateToProps, mapDispatchToProps)(floatingCart);
