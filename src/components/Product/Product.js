@@ -30,9 +30,7 @@ const product = (props) => {
             </div>
         )
     }
-        
     
-
     return (
         <div className="col-xs-12 col-sm-6 col-md-4">
             <article className="card-wrapper">
