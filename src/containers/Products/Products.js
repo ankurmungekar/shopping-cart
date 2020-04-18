@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from '../../axios';
-import { updateLocalStorageCart, getLocalStorageCart} from '../../helpers/helpers'
+import { connect } from 'react-redux';
+import * as actionType from '../../store/actions';
 
 import Aux from '../../hoc/Aux/Aux';
 import Spinner from '../../components/UI/Spinner/Spinner';
@@ -10,9 +11,7 @@ import FloatingCart from '../../components/FloatingCart/FloatingCart';
 class Products extends Component {
     state = {
         products: [],
-        loading: true,
-        floatingCart: getLocalStorageCart(),
-        isFloatingCartOpen: false
+        loading: true
     };
 
     componentDidMount() {
@@ -25,8 +24,8 @@ class Products extends Component {
                         id: key
                     });
                 }
-                if (this.state.floatingCart.length >= 0) {
-                    this.state.floatingCart.map(floatingCartItem => {
+                if (this.props.cart.length >= 0) {
+                    this.props.cart.map(floatingCartItem => {
                         fetchedProducts.map(fetchedItem => {
                             if (floatingCartItem.id === fetchedItem.id) {
                                 fetchedItem.addedToCart = true;
@@ -41,30 +40,7 @@ class Products extends Component {
             })
     }
 
-    addToCartHandler = (product) => {
-        const updatedFloatingCart = this.state.floatingCart;
-        const updatedProducts = this.state.products;
-        updatedProducts[product.id].addedToCart = true;
-        product.addedToCart = true;
-        updatedFloatingCart.push(product);
-        this.setState({products: updatedProducts, floatingCart:updatedFloatingCart, isFloatingCartOpen: true})
-        updateLocalStorageCart(this.state.floatingCart);
-    }
-
-    removeFromCartHandler = (product) => {
-        const updatedFloatingCart = this.state.floatingCart;
-        const updatedProducts = this.state.products;
-        updatedProducts[product.id].addedToCart = false;
-        const index = updatedFloatingCart.indexOf(product);
-        if (index !== -1) {
-            updatedFloatingCart.splice(index, 1);
-            this.setState({products: updatedProducts, floatingCart: updatedFloatingCart});
-        }
-        updateLocalStorageCart(this.state.floatingCart);
-    }
-
     checkoutHandler = () => {
-        updateLocalStorageCart(this.state.floatingCart);
         this.props.history.push('/checkout');
     }
 
@@ -74,7 +50,7 @@ class Products extends Component {
 
     render () {
         let products = (this.state.products.map(product => (
-                <Product product={product} key={product.name} clicked={this.addToCartHandler}/>
+                <Product product={product} key={product.name} clicked={this.props.onAddToCart}/>
             ))
         );
 
@@ -93,13 +69,26 @@ class Products extends Component {
                     <i className="fa fa-shopping-cart" aria-hidden="true"></i>
                 </div>
                 <FloatingCart 
-                    floatingCart={this.state.floatingCart}
-                    removeClicked={this.removeFromCartHandler}
-                    checkoutClicked={this.checkoutHandler}
-                    isOpen={this.state.isFloatingCartOpen} />
+                    floatingCart={this.props.cart}
+                    removeClicked={this.props.onRemoveFromToCart}
+                    checkoutClicked={this.checkoutHandler} />
             </Aux>  
         );
     }
 }
 
-export default Products
+const mapStateToProps = state => {
+    return {
+        cart: state.cart,
+        isFloatingCartOpen: state.isFloatingCartOpen
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onAddToCart: (product) => dispatch({type: actionType.ADD_PRODUCT_TO_CART, value: product}),
+        onRemoveFromToCart: (product) => dispatch({type: actionType.REMOVE_PRODUCT_FROM_CART, value: product})
+    }
+}  
+
+export default connect(mapStateToProps, mapDispatchToProps)(Products);

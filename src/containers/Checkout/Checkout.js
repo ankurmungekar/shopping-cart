@@ -1,65 +1,29 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actionType from '../../store/actions';
 
 import CartItem from './CartItem/CartItem';
 import { updateLocalStorageCart, getLocalStorageCart, updateTotal } from '../../helpers/helpers'
 
 class Checkout extends Component {
 
-    state = {
-        products: getLocalStorageCart()
-    }
-
-    removeFromCartHandler = (product) => {
-        const updatedProducts = this.state.products;
-        const index = updatedProducts.indexOf(product);
-        if (index !== -1) {
-            updatedProducts.splice(index, 1);
-            this.setState({products: updatedProducts});
-        }
-        updateLocalStorageCart(this.state.products);
-    }
-
     cartTotal = () => {
-        return updateTotal(this.state.products)
-    }
-
-    increaseQuantityHandler = (product) => {
-        const updatedProducts = this.state.products;
-        updatedProducts.map(cartItem => {
-            if(cartItem.id === product.id) {
-                cartItem.quantity++
-            }
-        })
-        this.setState({products: updatedProducts});
-        updateLocalStorageCart(this.state.products);
-    }
-
-    decreaseQuantityHandler = (product) => {
-        if (product.quantity > 1) {
-            const updatedProducts = this.state.products;
-            updatedProducts.map(cartItem => {
-                if(cartItem.id === product.id) {
-                    cartItem.quantity--
-                }
-            })
-            this.setState({products: updatedProducts});
-            updateLocalStorageCart(this.state.products);
-        }
+        return updateTotal(this.props.cart)
     }
 
     render () {
 
         let cartItems = (
-            this.state.products.map(cartItem => (
+            this.props.cart.map(cartItem => (
                 <CartItem 
                     product={cartItem} 
-                    removeClicked={this.removeFromCartHandler} 
-                    increaseQuantityClicked={this.increaseQuantityHandler} 
-                    decreaseQuantityClicked={this.decreaseQuantityHandler} />
+                    removeClicked={this.props.onRemoveFromToCart} 
+                    increaseQuantityClicked={this.props.onIncreaseQuantity} 
+                    decreaseQuantityClicked={this.props.onDecreaseQuantity} />
             ))
         )
 
-        if (this.state.products.length <= 0) {
+        if (this.props.cart.length <= 0) {
             cartItems = <p className="text-center">Your cart is emty, go buy something</p>
         }
 
@@ -89,4 +53,18 @@ class Checkout extends Component {
     }
 }
 
-export default Checkout
+const mapStateToProps = state => {
+    return {
+        cart: state.cart
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onRemoveFromToCart: (product) => dispatch({type: actionType.REMOVE_PRODUCT_FROM_CART, value: product}),
+        onIncreaseQuantity: (product) => dispatch({type: actionType.ON_INCREASE_QUANTITY, value: product}),
+        onDecreaseQuantity: (product) => dispatch({type: actionType.ON_DECREASE_QUANTITY, value: product})
+    }
+}  
+
+export default connect(mapStateToProps, mapDispatchToProps)(Checkout);
